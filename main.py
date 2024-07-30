@@ -63,20 +63,20 @@ def plot_sales_over_time(sales_per_date):
 
 # Основной блок программы
 if __name__ == "__main__":
-    file_path = 'sales_data.csv'
-    sales_data = read_sales_data(file_path)
+    file_path_sales = 'sales_data.csv'
+    sales_data_list = read_sales_data(file_path_sales)
 
-    sales_per_product = total_sales_per_product(sales_data)
-    sales_per_date = sales_over_time(sales_data)
+    total_sales_per_product_dict = total_sales_per_product(sales_data_list)
+    total_sales_per_date_dict = sales_over_time(sales_data_list)
 
     # Определяем продукт с наибольшей выручкой
-    max_product = max(sales_per_product, key=sales_per_product.get)
-    print(f"Продукт с наибольшей выручкой: {max_product}, сумма: {sales_per_product[max_product]}")
+    max_product = max(total_sales_per_product_dict, key=total_sales_per_product_dict.get)
+    print(f"Продукт с наибольшей выручкой: {max_product}, сумма: {total_sales_per_product_dict[max_product]}")
 
     # Определяем день с наибольшей суммой продаж
-    max_date = max(sales_per_date, key=sales_per_date.get)
-    print(f"День с наибольшей суммой продаж: {max_date}, сумма: {sales_per_date[max_date]}")
+    max_date = max(total_sales_per_date_dict, key=total_sales_per_date_dict.get)
+    print(f"День с наибольшей суммой продаж: {max_date}, сумма: {total_sales_per_date_dict[max_date]}")
 
     # Строим графики
-    plot_total_sales_per_product(sales_per_product)
-    plot_sales_over_time(sales_per_date)
+    plot_total_sales_per_product(total_sales_per_product_dict)
+    plot_sales_over_time(total_sales_per_date_dict)
