@@ -3,6 +3,7 @@ from collections import defaultdict
 import matplotlib.pyplot as plt
 
 
+# Читаем данные о продажах из CSV файла.
 def read_sales_data(file_path):
     sales_data = []
     with open(file_path, mode='r', encoding='utf-8') as file:
@@ -17,6 +18,7 @@ def read_sales_data(file_path):
     return sales_data
 
 
+# Считаем общие суммы продаж для каждого продукта
 def total_sales_per_product(sales_data):
     sales_per_product = defaultdict(float)
     for sale in sales_data:
@@ -25,6 +27,7 @@ def total_sales_per_product(sales_data):
     return sales_per_product
 
 
+# Считаем общие суммы продаж за каждый день.
 def sales_over_time(sales_data):
     sales_per_date = defaultdict(float)
     for sale in sales_data:
@@ -33,6 +36,7 @@ def sales_over_time(sales_data):
     return sales_per_date
 
 
+# Строим график общей суммы продаж для каждого продукта.
 def plot_total_sales_per_product(sales_per_product):
     products = list(sales_per_product.keys())
     sales = list(sales_per_product.values())
@@ -47,6 +51,7 @@ def plot_total_sales_per_product(sales_per_product):
     plt.show()
 
 
+# Строим график общей суммы продаж за каждый день.
 def plot_sales_over_time(sales_per_date):
     dates = list(sales_per_date.keys())
     sales = list(sales_per_date.values())
@@ -61,7 +66,7 @@ def plot_sales_over_time(sales_per_date):
     plt.show()
 
 
-# Основной блок программы
+# Основной блок
 if __name__ == "__main__":
     file_path_sales = 'sales_data.csv'
     sales_data_list = read_sales_data(file_path_sales)
